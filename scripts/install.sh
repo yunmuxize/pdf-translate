@@ -97,3 +97,26 @@ echo "  OpenCode: 直接说「帮我翻译 xxx.pdf」"
 echo "  命令行:   bash ~/pdf-translate.sh paper.pdf"
 echo ""
 echo "确保 XGR_ALL_API_KEY 已设置后即可使用。"
+
+# ---- 可选：安装 MinerU（图片提取+版面分析）----
+echo ""
+echo "=== 可选：安装 MinerU ==="
+read -p "是否安装 MinerU（PDF 图片提取+版面分析）？需要约 3GB 下载 [y/N] " -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "  安装 MinerU 到 ~/.mineru..."
+    uv venv "${HOME}/.mineru" --python 3.12
+    export ALL_PROXY=http://127.0.0.1:7890 HTTPS_PROXY=http://127.0.0.1:7890 HTTP_PROXY=http://127.0.0.1:7890
+    VIRTUAL_ENV="${HOME}/.mineru" uv pip install -U "mineru[all]"
+    unset ALL_PROXY HTTPS_PROXY HTTP_PROXY
+    echo "  ✓ MinerU 安装完成"
+    echo "  使用前设：export MINERU_MODEL_SOURCE=modelscope（国内模型下载加速）"
+else
+    echo "  跳过 MinerU（图片提取将使用 PyMuPDF 备用方案）"
+fi
+
+# ---- 安装笔记生成脚本 ----
+if [ -f "$SCRIPT_DIR/paper-notes.sh" ]; then
+    cp "$SCRIPT_DIR/paper-notes.sh" "${HOME}/paper-notes.sh"
+    chmod +x "${HOME}/paper-notes.sh"
+    echo "  ✓ 笔记生成脚本已安装到 ~/paper-notes.sh"
+fi

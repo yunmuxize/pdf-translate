@@ -1,6 +1,12 @@
-# pdf-translate — 论文双栏翻译 Skill
+# pdf-translate — 论文双栏翻译 + 图片提取 Skill
 
-一键将英文学术 PDF 翻译为**中英对照双栏 PDF**。基于 [pdf2zh-next](https://github.com/PDFMathTranslate-next/PDFMathTranslate-next)（BabelDOC 编排层）+ DeepSeek-V4-Flash + JSON mode，通过 PCL 网关调用，国内直连无需代理。
+一键将英文学术 PDF 翻译为**中英对照双栏 PDF**，并提取论文图片用于制作图文并茂的学习笔记。基于 [pdf2zh-next](https://github.com/PDFMathTranslate-next/PDFMathTranslate-next)（BabelDOC 编排层）+ DeepSeek-V4-Flash + JSON mode + [MinerU](https://github.com/opendatalab/MinerU)（图片提取与版面分析），通过 PCL 网关调用，国内直连无需代理。
+
+## 功能
+
+1. **翻译** — 中英对照双栏 PDF（`*.zh-CN.dual.pdf`）+ 纯中文版（`*.zh-CN.mono.pdf`）
+2. **图片提取** — 从论文中提取所有 Figure 为 PNG，保留页码和坐标元数据
+3. **笔记生成** — 生成带图片引用的 Markdown 笔记骨架
 
 ## 效果
 
@@ -105,8 +111,9 @@ pdf-translate/
 ├── skill/
 │   └── SKILL.md              # OpenCode skill 定义
 ├── scripts/
-│   ├── install.sh            # 一键安装
-│   └── pdf-translate.sh      # 翻译封装脚本（安装后复制到 ~/pdf-translate.sh）
+│   ├── install.sh            # 一键安装（含可选 MinerU）
+│   ├── pdf-translate.sh      # 翻译封装脚本
+│   └── paper-notes.sh        # 图片提取+笔记生成脚本
 └── LICENSE
 ```
 
