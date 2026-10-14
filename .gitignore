@@ -1,0 +1,10 @@
+# 忽略翻译产物
+babeldoc-output*/
+*.zh-CN.dual.pdf
+*.zh-CN.mono.pdf
+translate.log
+
+# 忽略缓存
+__pycache__/
+*.pyc
+.cache/
