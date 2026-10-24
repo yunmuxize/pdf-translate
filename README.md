@@ -1,5 +1,8 @@
 # pdf-translate — 论文双栏翻译 + 图片提取 Skill
 
+[English README](./README_EN.md) | [中文说明](./README.md)
+
+
 一键将英文学术 PDF 翻译为**中英对照双栏 PDF**，并提取论文图片用于制作图文并茂的学习笔记。基于 [pdf2zh-next](https://github.com/PDFMathTranslate-next/PDFMathTranslate-next)（BabelDOC 编排层）+ DeepSeek-V4-Flash + JSON mode + [MinerU](https://github.com/opendatalab/MinerU)（图片提取与版面分析），通过 PCL 网关调用，国内直连无需代理。
 
 ## 功能
